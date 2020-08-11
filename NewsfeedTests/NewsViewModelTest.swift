@@ -14,20 +14,20 @@ import OHHTTPStubs
 class NewsViewModelTest: XCTestCase {
     private var viewModel: NewsViewModel!
     
+    private let hostUrl: String = "api.rss2json.com"
+    
     override func setUpWithError() throws {
         viewModel = NewsViewModel()
-        stub(condition: isHost("api.rss2json.com")) { (response) -> HTTPStubsResponse in
-            return fixture(filePath: OHPathForFile("news.json", type(of: self))!, status: 200, headers: ["Content-Type":"application/json"])
-        }
-
      }
 
      override func tearDownWithError() throws {
          // Put teardown code here. This method is called after the invocation of each test method in the class.
+        HTTPStubs.removeAllStubs()
     
      }
     
     func testNumberOfSectionInTableView() {
+        
         let numberOfSections = viewModel.numberOfSections(in: UITableView())
         XCTAssertTrue(numberOfSections == 1)
     }
@@ -64,7 +64,7 @@ class NewsViewModelTest: XCTestCase {
        }
     
     func testSuccessResponseForNewsRequest() {
-        
+        stubSuccessResponse()
         let expectation = XCTestExpectation(description: "Get News detail API")
         viewModel.getNewsDetails()
         viewModel.news.bind { (news) in
@@ -80,8 +80,31 @@ class NewsViewModelTest: XCTestCase {
             }
         }
         wait(for: [expectation], timeout: 10.0)
+        
+        addTeardownBlock {
+            HTTPStubs.removeAllStubs()
+        }
 
     }
+    
+    func testFailureResponseForNewsRequest()  {
+        stubFailureResponse()
+        let expectation = XCTestExpectation(description: "Get News detail API")
+        viewModel.getNewsDetails()
+        viewModel.error.bind { (error) in
+            if error != nil {
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 10.0)
+        
+        addTeardownBlock {
+            HTTPStubs.removeAllStubs()
+        }
+    }
+    
+    
     
     func tableViewWithCell() -> UITableView {
         let tableView = UITableView()
@@ -94,6 +117,19 @@ class NewsViewModelTest: XCTestCase {
         let enclosure = Enclosure(link: "link")
         let item = Item(title: "title", thumbnail: "thumbnail", enclosure: enclosure, pubDate: "pubDate")
         return item
+    }
+    
+    func stubSuccessResponse()  {
+        stub(condition: isHost(hostUrl)) { (response) -> HTTPStubsResponse in
+            return fixture(filePath: OHPathForFile("news.json", type(of: self))!, status: 200, headers: ["Content-Type":"application/json"])
+        }
+    }
+    
+    func stubFailureResponse()  {
+        stub(condition: isHost(hostUrl)) { (response) -> HTTPStubsResponse in
+            let httpError = NSError(domain: NSURLErrorDomain, code: URLError.notConnectedToInternet.rawValue)
+            return HTTPStubsResponse(error: httpError)
+        }
     }
 
 }

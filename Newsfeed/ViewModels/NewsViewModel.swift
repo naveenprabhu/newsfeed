@@ -13,7 +13,7 @@ class NewsViewModel: NSObject {
     
     var news: Box<News?> = Box(nil)
     
-    var error:Error?
+    var error:Box<Error?> = Box(nil)
     
     
     func getNewsDetails() {
@@ -31,7 +31,7 @@ class NewsViewModel: NSObject {
             }
         }) { [weak self] (operation: URLSessionTask!, error: Error?) in
             guard let self = self else {return}
-            self.error = error
+            self.error.value = error
         }
     }
     
