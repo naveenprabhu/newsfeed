@@ -11,10 +11,28 @@ import UIKit
 
 class NewsViewModel: NSObject {
     
-    var news: News?
+    var news: Box<News?> = Box(nil)
+    
+    var error:Error?
+    
     
     func getNewsDetails() {
         
+        let parameters = [
+            Constants.rssUrlKey : Constants.rssUrl
+        ]
+        
+        AFNetworkClient.shared.get(Constants.apiUri, parameters: parameters, headers: nil, progress: nil, success: { [weak self] (operation: URLSessionTask!, responseObject: Any?) in
+            guard let self = self else {return}
+            if let responseObject = responseObject {
+                let responseData = try! JSONSerialization.data(withJSONObject: responseObject, options: JSONSerialization.WritingOptions.prettyPrinted)
+                let newsResponseObj: News = try! JSONDecoder().decode(News.self, from: responseData)
+                self.news.value = newsResponseObj
+            }
+        }) { [weak self] (operation: URLSessionTask!, error: Error?) in
+            guard let self = self else {return}
+            self.error = error
+        }
     }
     
 }
@@ -27,7 +45,7 @@ extension NewsViewModel: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news?.items.count ?? 0
+        return news.value?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

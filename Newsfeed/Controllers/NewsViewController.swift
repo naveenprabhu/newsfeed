@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
     
-    private var viewModel: NewsViewModel?
+    private var viewModel: NewsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,8 @@ class NewsViewController: UIViewController {
         
         tableView.dataSource = viewModel
         tableView.delegate = self
+        
+        viewModel.getNewsDetails()
         
     }
 

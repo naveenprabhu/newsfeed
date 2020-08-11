@@ -5,6 +5,8 @@ target 'Newsfeed' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'AFNetworking', '~> 4.0'
+  pod 'OHHTTPStubs/Swift'
+
 
   # Pods for Newsfeed
 
