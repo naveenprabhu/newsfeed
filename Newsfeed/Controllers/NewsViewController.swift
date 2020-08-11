@@ -17,6 +17,7 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
         viewModel = NewsViewModel()
         tableView.dataSource = viewModel
+        tableView.allowsSelection = false
         
         setupNavigationBar()
         setupRefreshControl()
@@ -33,8 +34,8 @@ class NewsViewController: UITableViewController {
     }
     
     func displayErrorAlert()  {
-        let alert = UIAlertController(title: "Error", message: "Our Systems are down, kindly try again later", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
+        let alert = UIAlertController(title: Constants.errorTitle, message: Constants.errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.ok, style: .default, handler: nil))
         present(alert, animated: true, completion: {
             self.refreshControl?.endRefreshing()
         })
@@ -66,6 +67,9 @@ class NewsViewController: UITableViewController {
     func setupEnterForegroundNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(fetchNews), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-    
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
