@@ -33,7 +33,14 @@ class NewsViewModelTest: XCTestCase {
     }
     
     func testNumberOfRowsInSectionSameAsNewsItemsCount() {
-        viewModel.news = News(items: [Items(), Items()])
+        var items : [Item] = []
+        items.append(createItem())
+        items.append(createItem())
+        items.append(createItem())
+        
+        viewModel.news = News(items: items)
+        let numberOfRows = viewModel.tableView(tableViewWithCell(), numberOfRowsInSection: 0)
+        XCTAssertTrue(numberOfRows == 3)
     }
     
     func testReturnNewsHeadingCellIForFirstIndexPath() {
@@ -57,8 +64,10 @@ class NewsViewModelTest: XCTestCase {
         return tableView
     }
     
-    func createItem() -> Items {
-        let item = Items(title: <#T##String#>)
+    func createItem() -> Item {
+        let enclosure = Enclosure(link: "link")
+        let item = Item(title: "title", thumbnail: "thumbnail", enclosure: enclosure, pubDate: "pubDate")
+        return item
     }
 
 }
