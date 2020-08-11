@@ -33,8 +33,7 @@ class NewsViewModel: NSObject {
             guard let self = self else {return}
             self.error.value = error
         }
-    }
-    
+    }    
 }
 
 
@@ -53,22 +52,23 @@ extension NewsViewModel: UITableViewDataSource{
         if indexPath.row == 0 {
             let cell: NewsHeadingTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.headingCell) as! NewsHeadingTableViewCell
             cell.headingtitleLabel.text = item.title
-            cell.headingdateLabel.text = item.pubDate
+            cell.headingdateLabel.text = DateUtil.convertUTCToLocalTime(item.pubDate)
             
             let imageUrl: URL! = URL(string: item.enclosure.link)
             cell.headingimageView.setImageWith(imageUrl, placeholderImage: UIImage(named: "Placeholder"))
+            
             return cell
         } else {
             let cell: NewsListTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.listCell) as! NewsListTableViewCell
             cell.newstitleLabel.text = item.title
-            cell.newsdateLabel.text = item.pubDate
+            cell.newsdateLabel.text = DateUtil.convertUTCToLocalTime(item.pubDate)
+            
             let imageUrl: URL! = URL(string: item.thumbnail)
             cell.thumbnailImageView.setImageWith(imageUrl, placeholderImage: UIImage(named: "Placeholder"))
             
-            cell.setNeedsLayout()
             return cell
         }
     }
-
+    
     
 }
