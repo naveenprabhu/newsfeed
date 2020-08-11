@@ -23,21 +23,31 @@ class NewsViewModelTest: XCTestCase {
     
     func testNumberOfSectionInTableView() {
         let numberOfSections = viewModel.numberOfSections(in: UITableView())
-        XCTAssert(numberOfSections == 1)
+        XCTAssertTrue(numberOfSections == 1)
+    }
+    
+    func testNumberOfRowsInSectionIsZeroIfNoNews()  {
+        viewModel.news = nil
+        let numberOfRows = viewModel.tableView(tableViewWithCell(), numberOfRowsInSection: 0)
+        XCTAssertTrue(numberOfRows == 0)
+    }
+    
+    func testNumberOfRowsInSectionSameAsNewsItemsCount() {
+        viewModel.news = News(items: [Items(), Items()])
     }
     
     func testReturnNewsHeadingCellIForFirstIndexPath() {
         
         let tableView = tableViewWithCell()
         let tableViewCell = viewModel.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-           XCTAssertNotNil(tableViewCell as? NewsHeadingTableViewCell)
+           XCTAssertTrue(tableViewCell is NewsHeadingTableViewCell)
     }
     
     func testReturnNewsHeadingCellIForNonFirstIndexPath() {
            
            let tableView = tableViewWithCell()
            let tableViewCell = viewModel.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
-              XCTAssertNotNil(tableViewCell as? NewsListTableViewCell)
+              XCTAssertTrue(tableViewCell is NewsListTableViewCell)
        }
     
     func tableViewWithCell() -> UITableView {
@@ -45,6 +55,10 @@ class NewsViewModelTest: XCTestCase {
         tableView.register(NewsHeadingTableViewCell.self, forCellReuseIdentifier: Constants.headingCell)
         tableView.register(NewsListTableViewCell.self, forCellReuseIdentifier: Constants.listCell)
         return tableView
+    }
+    
+    func createItem() -> Items {
+        let item = Items(title: <#T##String#>)
     }
 
 }
