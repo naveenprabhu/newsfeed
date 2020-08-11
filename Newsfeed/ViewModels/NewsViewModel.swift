@@ -49,11 +49,23 @@ extension NewsViewModel: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item: Item! = news.value?.items[indexPath.row]
         if indexPath.row == 0 {
             let cell: NewsHeadingTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.headingCell) as! NewsHeadingTableViewCell
+            cell.headingtitleLabel.text = item.title
+            cell.headingdateLabel.text = item.pubDate
+            
+            let imageUrl: URL! = URL(string: item.enclosure.link)
+            cell.headingimageView.setImageWith(imageUrl, placeholderImage: UIImage(named: "Placeholder"))
             return cell
         } else {
             let cell: NewsListTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.listCell) as! NewsListTableViewCell
+            cell.newstitleLabel.text = item.title
+            cell.newsdateLabel.text = item.pubDate
+            let imageUrl: URL! = URL(string: item.thumbnail)
+            cell.thumbnailImageView.setImageWith(imageUrl, placeholderImage: UIImage(named: "Placeholder"))
+            
+            cell.setNeedsLayout()
             return cell
         }
     }

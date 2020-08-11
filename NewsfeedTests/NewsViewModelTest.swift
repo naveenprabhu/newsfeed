@@ -18,13 +18,11 @@ class NewsViewModelTest: XCTestCase {
     
     override func setUpWithError() throws {
         viewModel = NewsViewModel()
-     }
-
-     override func tearDownWithError() throws {
-         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        HTTPStubs.removeAllStubs()
+    }
     
-     }
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.        
+    }
     
     func testNumberOfSectionInTableView() {
         
@@ -53,15 +51,15 @@ class NewsViewModelTest: XCTestCase {
         
         let tableView = tableViewWithCell()
         let tableViewCell = viewModel.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-           XCTAssertTrue(tableViewCell is NewsHeadingTableViewCell)
+        XCTAssertTrue(tableViewCell is NewsHeadingTableViewCell)
     }
     
     func testReturnNewsHeadingCellIForNonFirstIndexPath() {
-           
-           let tableView = tableViewWithCell()
-           let tableViewCell = viewModel.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
-              XCTAssertTrue(tableViewCell is NewsListTableViewCell)
-       }
+        
+        let tableView = tableViewWithCell()
+        let tableViewCell = viewModel.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
+        XCTAssertTrue(tableViewCell is NewsListTableViewCell)
+    }
     
     func testSuccessResponseForNewsRequest() {
         stubSuccessResponse()
@@ -84,7 +82,7 @@ class NewsViewModelTest: XCTestCase {
         addTeardownBlock {
             HTTPStubs.removeAllStubs()
         }
-
+        
     }
     
     func testFailureResponseForNewsRequest()  {
@@ -131,5 +129,5 @@ class NewsViewModelTest: XCTestCase {
             return HTTPStubsResponse(error: httpError)
         }
     }
-
+    
 }

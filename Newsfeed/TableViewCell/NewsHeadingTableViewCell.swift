@@ -10,4 +10,9 @@ import Foundation
 import UIKit
 class NewsHeadingTableViewCell: UITableViewCell {
     
+    @IBOutlet var headingimageView: UIImageView!
+    
+    @IBOutlet var headingtitleLabel: UILabel!
+    
+    @IBOutlet var headingdateLabel: UILabel!
 }

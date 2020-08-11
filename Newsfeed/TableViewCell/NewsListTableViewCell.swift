@@ -10,4 +10,9 @@ import Foundation
 import UIKit
 class NewsListTableViewCell: UITableViewCell {
     
+    @IBOutlet var newstitleLabel: UILabel!
+    
+    @IBOutlet var newsdateLabel: UILabel!
+    
+    @IBOutlet var thumbnailImageView: UIImageView!
 }

@@ -13,19 +13,36 @@ class NewsViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
     private var viewModel: NewsViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NewsViewModel()
         
         tableView.dataSource = viewModel
         tableView.delegate = self
-        
         viewModel.getNewsDetails()
         
+        setupDataBinding()
     }
-
-
+    
+    func displayErrorAlert()  {
+        let alert = UIAlertController(title: "Error", message: "Our Systems are down, kindly try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setupDataBinding(){
+        viewModel.news.bind { [weak self] (news) in
+            self?.tableView.reloadData()
+        }
+        viewModel.error.bind { [weak self] (error) in
+            if error != nil {
+                self?.displayErrorAlert()
+            }
+        }
+    }
+    
+    
 }
 
 

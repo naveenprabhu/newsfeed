@@ -20,23 +20,26 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsHeadingCell" id="OGS-7R-PqX" userLabel="Heading Table View Cell" customClass="NewsHeadingTableViewCell" customModule="Newsfeed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="551"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="442"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OGS-7R-PqX" id="nEo-uc-nFN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="442"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="HeadingImage" translatesAutoresizingMaskIntoConstraints="NO" id="4Xk-V1-ErL" userLabel="Heading News Image">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="404"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeadingImage" translatesAutoresizingMaskIntoConstraints="NO" id="4Xk-V1-ErL" userLabel="Heading News Image">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="310.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="4Xk-V1-ErL" secondAttribute="height" multiplier="2:1.5" id="9ty-1O-4cR"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green sea turtles make an astounding comeback in central NYC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Oi-JR-zMc" userLabel="Heading News Label">
-                                                    <rect key="frame" x="30" y="414" width="354" height="82"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Green sea turtles make an astounding comeback in central NYC" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Oi-JR-zMc" userLabel="Heading News Label">
+                                                    <rect key="frame" x="30" y="320.5" width="354" height="82.5"/>
                                                     <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="24"/>
                                                     <color key="textColor" red="0.035294117647058823" green="0.48627450980392156" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apr 1, 2014 06:37 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-gy-dal" userLabel="Heading Date Label">
-                                                    <rect key="frame" x="30" y="511" width="354" height="19"/>
+                                                    <rect key="frame" x="30" y="413" width="354" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -46,52 +49,66 @@
                                                 <constraint firstItem="MBq-gy-dal" firstAttribute="leading" secondItem="3Oi-JR-zMc" secondAttribute="leading" id="3He-sl-smq"/>
                                                 <constraint firstItem="4Xk-V1-ErL" firstAttribute="top" secondItem="nEo-uc-nFN" secondAttribute="top" id="8PF-c2-a3C"/>
                                                 <constraint firstItem="3Oi-JR-zMc" firstAttribute="top" secondItem="4Xk-V1-ErL" secondAttribute="bottom" constant="10" id="B5h-2K-pwc"/>
-                                                <constraint firstItem="MBq-gy-dal" firstAttribute="top" secondItem="3Oi-JR-zMc" secondAttribute="bottom" constant="15" id="BiZ-Fb-A2t"/>
+                                                <constraint firstItem="MBq-gy-dal" firstAttribute="top" secondItem="3Oi-JR-zMc" secondAttribute="bottom" constant="10" id="BiZ-Fb-A2t"/>
                                                 <constraint firstItem="4Xk-V1-ErL" firstAttribute="leading" secondItem="nEo-uc-nFN" secondAttribute="leading" id="LRt-WA-Q0a"/>
                                                 <constraint firstAttribute="trailing" secondItem="4Xk-V1-ErL" secondAttribute="trailing" id="Mu9-Se-A5R"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3Oi-JR-zMc" secondAttribute="trailing" constant="10" id="Wkh-VQ-WlV"/>
                                                 <constraint firstItem="3Oi-JR-zMc" firstAttribute="leading" secondItem="nEo-uc-nFN" secondAttribute="leadingMargin" constant="10" id="hxC-Pj-TRV"/>
-                                                <constraint firstItem="MBq-gy-dal" firstAttribute="bottom" secondItem="nEo-uc-nFN" secondAttribute="bottomMargin" constant="-10" id="whB-FU-JBw"/>
+                                                <constraint firstItem="MBq-gy-dal" firstAttribute="bottom" secondItem="nEo-uc-nFN" secondAttribute="bottom" constant="-10" id="whB-FU-JBw"/>
                                                 <constraint firstItem="MBq-gy-dal" firstAttribute="trailing" secondItem="3Oi-JR-zMc" secondAttribute="trailing" id="zqa-tz-Lcm"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headingdateLabel" destination="MBq-gy-dal" id="aa4-Ne-jkR"/>
+                                            <outlet property="headingimageView" destination="4Xk-V1-ErL" id="sg9-a9-S9Q"/>
+                                            <outlet property="headingtitleLabel" destination="3Oi-JR-zMc" id="eWZ-FG-a2s"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsListCell" id="pXZ-SK-7RY" userLabel="News List Table View Cell" customClass="NewsListTableViewCell" customModule="Newsfeed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="579" width="414" height="117"/>
+                                        <rect key="frame" x="0.0" y="470" width="414" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pXZ-SK-7RY" id="6gL-9o-Zbe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Paramount film studio to lay off 5% of its people." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeK-6j-vPy" userLabel="News Label">
-                                                    <rect key="frame" x="30" y="21" width="286.5" height="46"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Paramount film studio to lay off 5% of its people." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeK-6j-vPy" userLabel="News Label">
+                                                    <rect key="frame" x="30" y="21" width="229" height="46"/>
                                                     <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.48627450980392156" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apr 1, 2014 06:37 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-Bq-oUm" userLabel="Date Label">
-                                                    <rect key="frame" x="30" y="77" width="286.5" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" text="Apr 1, 2014 06:37 PM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-Bq-oUm" userLabel="Date Label">
+                                                    <rect key="frame" x="30" y="77" width="229" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThumbnailImage" translatesAutoresizingMaskIntoConstraints="NO" id="lwb-t1-oeM" userLabel="News Image">
-                                                    <rect key="frame" x="331.5" y="11" width="82.5" height="95"/>
+                                                    <rect key="frame" x="274" y="0.0" width="140" height="106"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="zD4-qo-Xu4"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lwb-t1-oeM" firstAttribute="top" secondItem="6gL-9o-Zbe" secondAttribute="topMargin" id="4F2-Ri-SGy"/>
                                                 <constraint firstItem="IVB-Bq-oUm" firstAttribute="top" secondItem="JeK-6j-vPy" secondAttribute="bottom" constant="10" id="DLh-XM-M4G"/>
+                                                <constraint firstItem="lwb-t1-oeM" firstAttribute="top" secondItem="6gL-9o-Zbe" secondAttribute="top" id="EKd-iP-wgc"/>
                                                 <constraint firstItem="IVB-Bq-oUm" firstAttribute="leading" secondItem="JeK-6j-vPy" secondAttribute="leading" id="Gux-nA-O9w"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lwb-t1-oeM" secondAttribute="bottom" id="H70-zC-CLM"/>
                                                 <constraint firstAttribute="trailing" secondItem="lwb-t1-oeM" secondAttribute="trailing" id="Ixm-rf-0wi"/>
                                                 <constraint firstItem="JeK-6j-vPy" firstAttribute="leading" secondItem="6gL-9o-Zbe" secondAttribute="leadingMargin" constant="10" id="LWA-wD-qrQ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="IVB-Bq-oUm" secondAttribute="bottom" constant="10" id="Ryc-zu-x5g"/>
+                                                <constraint firstAttribute="bottom" secondItem="IVB-Bq-oUm" secondAttribute="bottom" constant="10" id="UPc-fN-eIK"/>
                                                 <constraint firstItem="JeK-6j-vPy" firstAttribute="top" secondItem="6gL-9o-Zbe" secondAttribute="topMargin" constant="10" id="VNa-YL-5a3"/>
                                                 <constraint firstItem="IVB-Bq-oUm" firstAttribute="trailing" secondItem="JeK-6j-vPy" secondAttribute="trailing" id="Vba-qt-02h"/>
+                                                <constraint firstAttribute="bottom" secondItem="lwb-t1-oeM" secondAttribute="bottom" id="j7B-af-TOf"/>
                                                 <constraint firstItem="lwb-t1-oeM" firstAttribute="leading" secondItem="JeK-6j-vPy" secondAttribute="trailing" constant="15" id="oC0-vf-YtE"/>
+                                                <constraint firstItem="lwb-t1-oeM" firstAttribute="height" secondItem="6gL-9o-Zbe" secondAttribute="height" priority="250" id="p5n-ZR-s8l"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsdateLabel" destination="IVB-Bq-oUm" id="1Lx-AD-rJV"/>
+                                            <outlet property="newstitleLabel" destination="JeK-6j-vPy" id="hqh-4n-Jwy"/>
+                                            <outlet property="thumbnailImageView" destination="lwb-t1-oeM" id="xCg-2t-bZa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
