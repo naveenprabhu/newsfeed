@@ -19,9 +19,9 @@ class NewsViewController: UIViewController {
         viewModel = NewsViewModel()
         
         tableView.dataSource = viewModel
-        tableView.delegate = self
         viewModel.getNewsDetails()
         
+        setupNavigationBar()
         setupDataBinding()
     }
     
@@ -40,6 +40,13 @@ class NewsViewController: UIViewController {
                 self?.displayErrorAlert()
             }
         }
+    }
+    
+    func setupNavigationBar()  {
+        let titleImage = UIImage(named: "Transpire")
+        let imageView = UIImageView(image: titleImage)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
     }
     
     
