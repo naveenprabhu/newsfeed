@@ -9,12 +9,24 @@
 import UIKit
 
 class NewsViewController: UIViewController {
+    
+    @IBOutlet private var tableView: UITableView!
+    
+    private var viewModel: NewsViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        viewModel = NewsViewModel()
+        
+        tableView.dataSource = viewModel
+        tableView.delegate = self
+        
     }
 
 
 }
 
+
+extension NewsViewController : UITableViewDelegate{
+    
+}
