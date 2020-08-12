@@ -54,6 +54,9 @@
                                         <constraint firstItem="MBq-gy-dal" firstAttribute="trailing" secondItem="3Oi-JR-zMc" secondAttribute="trailing" id="zqa-tz-Lcm"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="newsHeadingCell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="headingdateLabel" destination="MBq-gy-dal" id="aa4-Ne-jkR"/>
                                     <outlet property="headingimageView" destination="4Xk-V1-ErL" id="sg9-a9-S9Q"/>
@@ -100,6 +103,9 @@
                                         <constraint firstItem="lwb-t1-oeM" firstAttribute="height" secondItem="6gL-9o-Zbe" secondAttribute="height" priority="250" id="p5n-ZR-s8l"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="newsListCell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="newsdateLabel" destination="IVB-Bq-oUm" id="1Lx-AD-rJV"/>
                                     <outlet property="newstitleLabel" destination="JeK-6j-vPy" id="hqh-4n-Jwy"/>
@@ -107,6 +113,9 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="NewsView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="zqK-pa-XEI" id="6vF-FB-L5i"/>
                             <outlet property="delegate" destination="zqK-pa-XEI" id="sUs-3c-mrE"/>
