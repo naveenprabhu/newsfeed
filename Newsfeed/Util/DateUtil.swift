@@ -10,6 +10,13 @@ import Foundation
 
 struct DateUtil {
     
+    /**
+     Converts UTC time stamp to time stamp the user has selecte on his phone
+     
+     - Parameter dateTime: The UTC dateTime stamp to be converted
+     
+     -  Returns: The converted local timestamp based on user settings
+     */
     static func convertUTCToLocalTime(_ dateTime: String) -> String{
         let utcDateFormatter = DateFormatter()
         utcDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

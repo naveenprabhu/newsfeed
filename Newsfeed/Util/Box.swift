@@ -6,6 +6,11 @@
 //  Copyright © 2020 Naveenprabhu Arumugam. All rights reserved.
 //
 
+
+/**
+ Dynamic class for data binding between Viewmodel and Contorller
+ The call back listener is called immediately when the binding is setup
+ */
 import Foundation
 
 final class Box<T> {

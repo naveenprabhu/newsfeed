@@ -6,6 +6,9 @@
 //  Copyright © 2020 Naveenprabhu Arumugam. All rights reserved.
 //
 
+/**
+A custom tableview cell for the heading
+*/
 import Foundation
 import UIKit
 class NewsHeadingTableViewCell: UITableViewCell {

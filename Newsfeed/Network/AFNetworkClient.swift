@@ -6,6 +6,11 @@
 //  Copyright © 2020 Naveenprabhu Arumugam. All rights reserved.
 //
 
+/**
+ Wrapper class for AFHTTPSessionManager
+ Future expansion if needed to change base configuration and the URLs
+ */
+
 import Foundation
 import AFNetworking
 

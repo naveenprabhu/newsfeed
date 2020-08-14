@@ -11,9 +11,9 @@ import UIKit
 
 class NewsViewModel: NSObject {
     
-    var news: Box<News?> = Box(nil)
+    var news: Box<News?> = Box(nil) // Boxed news model object, enables data binding
     
-    var error:Box<Error?> = Box(nil)
+    var error:Box<Error?> = Box(nil) // Boxed error object, enables data binding
     
     
     func getNewsDetails() {
@@ -21,16 +21,16 @@ class NewsViewModel: NSObject {
         let parameters = [
             Constants.rssUrlKey : Constants.rssUrl
         ]
-
+        
         AFNetworkClient.shared.get(Constants.apiUri, parameters: parameters, headers: nil, progress: nil, success: { [weak self] (operation: URLSessionTask!, responseObject: Any?) in
-            guard let self = self else {return}
+            guard let self = self else {return} // Return if the refrence of self is not present
             if let responseObject = responseObject {
                 let responseData = try! JSONSerialization.data(withJSONObject: responseObject, options: JSONSerialization.WritingOptions.prettyPrinted)
                 let newsResponseObj: News = try! JSONDecoder().decode(News.self, from: responseData)
-                self.news.value = newsResponseObj
+                self.news.value = newsResponseObj // Assign the response to the boxed value of news model
             }
         }) { [weak self] (operation: URLSessionTask!, error: Error?) in
-            guard let self = self else {return}
+            guard let self = self else {return} // Return if the refrence of self is not present
             self.error.value = error
         }
     }    

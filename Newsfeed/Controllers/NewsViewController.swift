@@ -41,6 +41,10 @@ class NewsViewController: UITableViewController {
         })
     }
     
+    /**
+     Data binding between viewmodel and the controller.
+     The bind closure is called whent the data changes in the viewmodel
+     */
     func setupDataBinding(){
         viewModel.news.bind { [weak self] (news) in
             self?.refreshControl?.endRefreshing()

@@ -10,6 +10,4 @@ import Foundation
 
 struct News: Decodable {
     let items: [Item]
-    
-    
 }
